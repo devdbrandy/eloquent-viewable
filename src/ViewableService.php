@@ -195,7 +195,6 @@ class ViewableService implements ViewableServiceContract
         }
 
         $visitorCookie = Cookie::get($cookieName);
-        $visitor = $visitorCookie ?? $this->ipRepository->get();
 
         $view = app(ViewContract::class);
         $view->viewable_id = $viewable->getKey();
