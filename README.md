@@ -84,7 +84,7 @@ In this documentation, you will find some helpful information about the use of t
     * [Preparing your models](#preparing-your-models)
     * [Storing views](#storing-views)
     * [Storing views with expiry date](#storing-views-with-expiry-date)
-    * [Storing views under a tag](#storing-views-under-a-tag)
+    * [Tagging views](#tagging-views)
     * [Retrieving views counts](#retrieving-views-counts)
     * [Order models by views count](#order-models-by-views-count)
     * [`Views` helper](#views-helper)
