@@ -429,7 +429,7 @@ Views::create($post)->addView('customTag');
 Views::create($post)->addViewWithExpiryDate(Carbon::now()->addHours(2), 'customTag');
 
 // Retrieving views with a tag
-$post->getViewsByTag('customTag');
+Views::create($post)->getViewsByTag('customTag');
 ```
 
 #### Get views by viewable type
