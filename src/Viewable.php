@@ -57,6 +57,18 @@ trait Viewable
     }
 
     /**
+     * Get the total number of views by a tag.
+     *
+     * @param  \CyrildeWit\EloquentViewable\Support\Period
+     * @return int
+     */
+    public function getViewsByTag(string $tag, $period = null): int
+    {
+        return app(ViewableService::class)
+            ->getViewsCount($this, $period, false, $tag);
+    }
+
+    /**
      * Get the total number of unique views.
      *
      * @param  \CyrildeWit\EloquentViewable\Support\Period
@@ -73,9 +85,9 @@ trait Viewable
      *
      * @return bool
      */
-    public function addView(): bool
+    public function addView($tag = null): bool
     {
-        return app(ViewableService::class)->addViewTo($this);
+        return app(ViewableService::class)->addViewTo($this, $tag);
     }
 
     /**
