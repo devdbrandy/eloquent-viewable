@@ -443,11 +443,9 @@ $this->app->singleton(
 
 ### Creating helper methods for frequently used period formats
 
-#### App\Models\Post
+#### App\Post
 
 ```php
-// ...
-
 public function getViewsSince(DateTime $sinceDateTime)
 {
     return $this->getViews(Period::since($sinceDateTime));
@@ -467,22 +465,16 @@ public function getViewsInPastDays(int $days)
 {
     return $this->getViews(Period::pastDays($days));
 }
-
-// ...
 ```
 
 #### resources/views/post/show.blade.php
 
 ```html
-<!-- ... -->
-
 Page views since 2014: {{ $post->getViewsSince(Carbon::create(2014)) }}
 Page views upto 2016: {{ $post->getViewsUpto(Carbon::create(2016)) }}
 Page views between 2016 - 2018: {{ $post->getViewsBetween(Carbon::create(2016), Carbon::create(2018)) }}
 
 Page views in the past 5 days: {{ $post->getViewsInPastDays(5) }}
-
-<!-- ... -->
 ```
 
 ## Upgrading
