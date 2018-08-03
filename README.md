@@ -381,43 +381,41 @@ $post->getViewsByTag('customTag', Period::subDays(2));
 
 ### Order models by views count
 
+The viewable trait adds two scopes to your model: `scopeOrderByViews` and `scopeOrderByUniqueViews`.
+
 #### Retrieve Viewable models by views count
 
 ```php
-$sortedPosts = Post::orderByViewsCount()->get(); // desc
-$sortedPosts = Post::orderByViewsCount('asc')->get();
+Post::orderByViews()->get(); // descending
+Post::orderByViews('asc')->get(); // ascending
 ```
 
 #### Retrieve Viewable models by unique views count
 
 ```php
-$sortedPosts = Post::orderByUniqueViewsCount()->get(); // desc
-$sortedPosts = Post::orderByUniqueViewsCount('asc')->get();
+Post::orderByUniqueViews()->get(); // descending
+Post::orderByUniqueViews('asc')->get(); // ascending
 ```
 
 ### `Views` helper
 
+Namespace: `use CyrildeWit\EloquentViewable\Views`.
+
 #### Saving views
 
 ```php
-use CyrildeWit\EloquentViewable\Views;
-
 Views::create($post)->addView();
 ```
 
 #### Saving views with expiry date
 
 ```php
-use CyrildeWit\EloquentViewable\Views;
-
 Views::create($post)->addViewWithExpiryDate(Carbon::now()->addHours(2));
 ```
 
 #### Saving views under a tag
 
 ```php
-use CyrildeWit\EloquentViewable\Views;
-
 // addView method
 Views::create($post)->addView('customTag');
 
@@ -425,12 +423,9 @@ Views::create($post)->addView('customTag');
 Views::create($post)->addViewWithExpiryDate(Carbon::now()->addHours(2), 'customTag');
 ```
 
-
 #### Retrieving views counts
 
 ```php
-use CyrildeWit\EloquentViewable\Views;
-
 Views::create($post)->getViews();
 ```
 
@@ -439,8 +434,6 @@ Views::create($post)->getViews();
 To get the total number of views by a viewable type, you can use one of following methods.
 
 ```php
-use CyrildeWit\EloquentViewable\Views;
-
 Views::getViewsByType($post);
 Views::getViewsByType(Post::class);
 Views::getViewsByType('App\Post');
@@ -449,8 +442,6 @@ Views::getViewsByType('App\Post');
 #### Get most viewed viewables by type
 
 ```php
-use CyrildeWit\EloquentViewable\Views;
-
 // Get top 10 most viewed by type
 Views::getMostViewedByType($post, 10);
 Views::getMostViewedByType(Post::class, 10);
@@ -467,8 +458,6 @@ Views::getLowestViewedByType('App\Post', 10);
 Don't confuse this method with the `Period` class!
 
 ```php
-use CyrildeWit\EloquentViewable\Views;
-
 Views::getViewsPerPeriod('minute', 30); // per 30 minutes
 Views::getViewsPerPeriod('hour', 12); // per 12 hours
 Views::getViewsPerPeriod('day'); // per day
