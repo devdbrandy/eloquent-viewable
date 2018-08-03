@@ -353,7 +353,7 @@ $post->getUniqueViews(Period::subYears(3));
 
 ### Tagging views
 
-### Storing views with a tag
+#### Storing views with a tag
 
 In some cases you might want to have multiple counters for a viewable model. This can be easily achieved by passing an additional argument to the `addView` method.
 
@@ -367,7 +367,7 @@ And with expiry date:
 $post->addViewWithExpiryDate(Carbon::now()->addHours(2), 'customTag')
 ```
 
-### Retrieving views with a tag
+#### Retrieving views with a tag
 
 ```php
 $post->getViewsByTag('customTag');
@@ -378,7 +378,6 @@ It accepts a `Period` instance as second argument.
 ```php
 $post->getViewsByTag('customTag', Period::subDays(2));
 ```
-
 
 ### Order models by views count
 
