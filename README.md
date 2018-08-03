@@ -413,20 +413,23 @@ Views::create($post)->addView();
 Views::create($post)->addViewWithExpiryDate(Carbon::now()->addHours(2));
 ```
 
-#### Saving views under a tag
-
-```php
-// addView method
-Views::create($post)->addView('customTag');
-
-// addViewWithExpiryDate method
-Views::create($post)->addViewWithExpiryDate(Carbon::now()->addHours(2), 'customTag');
-```
-
 #### Retrieving views counts
 
 ```php
 Views::create($post)->getViews();
+```
+
+#### Tagging views
+
+```php
+// Storing views with a tag
+Views::create($post)->addView('customTag');
+
+// with expiry date
+Views::create($post)->addViewWithExpiryDate(Carbon::now()->addHours(2), 'customTag');
+
+// Retrieving views with a tag
+$post->getViewsByTag('customTag');
 ```
 
 #### Get views by viewable type
@@ -438,6 +441,7 @@ Views::getViewsByType($post);
 Views::getViewsByType(Post::class);
 Views::getViewsByType('App\Post');
 ```
+
 
 #### Get most viewed viewables by type
 
