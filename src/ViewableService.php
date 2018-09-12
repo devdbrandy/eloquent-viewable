@@ -196,6 +196,7 @@ class ViewableService implements ViewableServiceContract
 
         $visitorCookie = Cookie::get($cookieName);
 
+        // Create a new View model instance
         $view = app(ViewContract::class);
         $view->viewable_id = $viewable->getKey();
         $view->viewable_type = $viewable->getMorphClass();
