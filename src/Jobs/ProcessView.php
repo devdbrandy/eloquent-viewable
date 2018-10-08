@@ -55,4 +55,19 @@ class ProcessView implements ShouldQueue
         // Save the new view in the database.
         $this->view->save();
     }
+
+    /**
+     * Get the property value prepared for serialization.
+     *
+     * @param mixed $value
+     * @return mixed
+     */
+    protected function getSerializedPropertyValue($value)
+    {
+        if ($value instanceof QueueableEntity && !empty($value->getQueueableId())) {
+            return new ModelIdentifier(get_class($value), $value->getQueueableId());
+        }
+
+        return $value;
+    }
 }
